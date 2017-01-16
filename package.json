@@ -1,0 +1,24 @@
+{
+  "name": "ikigai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keffidesign/ikigai.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keffidesign/ikigai/issues"
+  },
+  "homepage": "https://github.com/keffidesign/ikigai#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^2.2.0-rc.6",
+    "webpack-dev-server": "^2.2.0-rc.0"
+  }
+}
