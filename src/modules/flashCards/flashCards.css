@@ -1,0 +1,42 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.word {
+    align-self: center;
+    font-size: 70px;
+}
+
+.translation {
+    align-self: center;
+    display: none;
+}
+
+.answer {
+    align-self: center;
+    border: none;
+    border-bottom: 1px solid black;
+    box-shadow: none;
+    border-radius: 0;
+    height: 40px;
+    width: 90%;
+    padding: 0;
+    /*margin: 0 50px;*/
+    text-align: center;
+    font-size: 17px;
+    font-family: "Times New Roman";
+}
+
+.answer:focus {
+    outline: none;
+}
