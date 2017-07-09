@@ -1,13 +1,4 @@
-import { createStream, subscribe } from 'streams';
-import { getAnswersStream } from 'datasets/answers.js';
-
 // import { main } from '../../../experiments';
-
-const answersStream = getAnswersStream();
-
-subscribe(answer => console.log(`--answer`, answer), answersStream);
-
-export const getQuestionsStream = () => answersStream;
 
 // import Rx from 'rxjs';
 // import './flashCards.css'

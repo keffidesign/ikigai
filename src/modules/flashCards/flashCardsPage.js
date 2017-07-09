@@ -1,5 +1,5 @@
 import { subscribe } from 'streams';
-import { getQuestionsStream } from './flashCards.js';
+import { getQuestionsStream } from 'datasets';
 
 const loadingPage = `
   <div class="content">
@@ -29,7 +29,5 @@ const answerPage = data => `
 
 subscribe({
   next: data => document.body.innerHTML = questionPage(data),
-  complete: () => document.body.innerHTML = emptyPage()
+  // complete: () => document.body.innerHTML = emptyPage()
 }, getQuestionsStream());
-
-// subscribe(question => console.log('--question', question), getQuestionsStream());
