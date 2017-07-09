@@ -2,11 +2,28 @@ import { createStream } from 'streams';
 
 const answersURI = `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1FR58xufUQ0YUGOMS0B8xomAq0eOaP4Cj6AVAtl0ZB3o`;
 
-const loadAllAnswers = (cb) => {
+export const loadAllAnswers = (cb) => {
 
-  fetch(answersURI)
+  return fetch(answersURI)
     .then(res => res.json())
-    .then(cb);
+};
+
+
+export const postAnswer = payload => {
+
+    const headers = new Headers({
+      "Content-Type": "application/json"
+    });
+
+    fetch(answersURI, {
+      mode: `no-cors`,
+      method: `POST`,
+      // headers,
+      body: JSON.stringify(payload)
+    })
+      .then(res => res.json())
+      .then(data => console.log('POST', data))
+      .catch(() => {});
 };
 
 export const getAnswersStream = () => {

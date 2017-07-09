@@ -12,6 +12,8 @@ body {
     justify-content: center;
 }
 
+.loading,
+.empty,
 .word {
     align-self: center;
     font-size: 70px;

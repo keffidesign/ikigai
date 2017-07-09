@@ -1,2 +1,2 @@
-export { getQuestionsStream } from './questions.js';
-export { getAnswersStream } from './answers.js';
+export { getWordsStream, loadAllWords } from './words.js';
+export { getAnswersStream, loadAllAnswers, postAnswer } from './answers.js';
