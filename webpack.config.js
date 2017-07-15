@@ -11,7 +11,7 @@ module.exports = {
 
   output: {
     filename: `[name].js`,
-    path: `/build`
+    path: `${__dirname}/build`
   },
 
   resolve: {
