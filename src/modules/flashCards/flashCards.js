@@ -2,6 +2,20 @@ import { render } from 'ui';
 import { createStream, subscribe } from 'streams';
 import { getWordsStream, loadAllWords, loadAllAnswers, postAnswer } from 'datasets';
 import Rx from 'rxjs';
+import moment from 'moment';
+
+const starSucceed = `<div class="star star--succeed">★</div>`;
+const starFailed = `<div class="star star--failed">★</div>`;
+const starEmpty = `<div class="star star--empty">☆</div>`;
+
+const renderStar = star => {
+
+  if (star === 'empty') return starEmpty;
+
+  return star === 'succeed' ? starSucceed : starFailed;
+};
+
+const renderStars = stars => `<div class="stars">${ map(star => renderStar(star))(stars).join('') }</div>`;
 
 const loadingPage = `
   <div class="content">
@@ -9,14 +23,19 @@ const loadingPage = `
   </div>
 `;
 
-const emptyPage = `
+const emptyPage = stars => `
   <div class="content">
     <div class="empty">Nothing to show.</div>
+    ${renderStars(stars)}
   </div>
 `;
 
-const questionPage = data => `
+const questionPage = (data, stars) => `
+  ${renderStars(stars)}
   <div class="content">
+
+  
+  
     <div class="word">${data.name || data.id}</div>
     <input type="text" class="answer" placeholder="Type answer here..." data-id="${data.id}" />
   </div>
@@ -47,44 +66,91 @@ loadAllAnswers()
       .filter(answer => (new Date(answer.date)).getDate() === (new Date()).getDate())
       .map(answer => answer.id);
 
-    console.log('--newAnswers', newAnswers);
-
     loadAllWords()
       .then(words => {
 
+        console.log('--newAnswers', newAnswers);
+
         let newWords = words.filter(word => !newAnswers.includes(word.id));
+
+        const stars = calculateStars(answers, !newWords.length);
 
         if (!newWords.length) {
 
-          return render(document.body, emptyPage);
+          return render(document.body, emptyPage(stars));
         }
 
+        render(document.body, questionPage(newWords[ 0 ], stars));
 
-        render(document.body, questionPage(newWords[0]));
+        const answersStream = Rx.Observable.fromEvent(document, 'keyup')
+          .filter(e => {
 
-        const answersStream = Rx.Observable.fromEvent(document.querySelector('.answer'), 'change')
-          .subscribe(value => {
-            console.log('--value', value.target && value.target.dataset.id);
+            const input = document.querySelector('.answer');
 
-            const id = value.target.dataset.id;
+            console.log('--13', input && input.value);
+
+            return e.keyCode === 13 && input && !!input.value;
+          })
+          .subscribe(() => {
+
+            const target = document.querySelector('.answer');
+
+            const id = target.dataset.id;
 
             newWords = newWords.filter(word => word.id !== id);
 
-            postAnswer({ id, enteredValue: value.target.value, date: (new Date()).toISOString() });
+            postAnswer({ id, enteredValue: target.value, date: (new Date()).toISOString() });
 
             console.log('--newWords', newWords, id);
 
             if (newWords.length) {
 
-              updateQuestion(newWords[0]);
+              updateQuestion(newWords[ 0 ]);
             } else {
 
-              render(document.body, emptyPage);
+              const stars = calculateStars(answers, true);
+
+              render(document.body, emptyPage(stars));
             }
           })
       });
   })
 
+function calculateStars(answers, todayCompleted) {
+
+  let smallestDay = (new Date(answers[0].date)).getDate();
+  let maxDay = (new Date(answers[0].date)).getDate();
+
+  const days = reduce((hash, answer) => {
+
+    const day = (new Date(answer.date)).getDate();
+
+    if (day < smallestDay) { smallestDay = day }
+    if (day > maxDay) { maxDay = day }
+
+    return { ...hash, [day]: true }
+  }, {}, answers);
+
+  const todayDate = moment.utc().date();
+
+  const stars = new Array(moment().daysInMonth() - smallestDay + 1).fill()
+    .map((_, i) => {
+
+      const day = i + smallestDay;
+
+      console.log('--day', day);
+
+      if (day > maxDay) { return 'empty' }
+
+      if (day === todayDate && !todayCompleted) { return 'empty' }
+
+      return days[day] ? 'succeed' : 'failed';
+    });
+
+  console.log('--days', stars, answers, days);
+
+  return stars
+}
 
 
 

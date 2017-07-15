@@ -27,3 +27,5 @@ export const length = sequence => sequence.length;
 export const last = sequence => sequence.slice(-1);
 
 //const has = (fn, list) => list.find(fn) !== undefined;
+
+export const range = n => new Array(n).fill().map((_, i) => i + 1);

@@ -42,3 +42,28 @@ body {
 .answer:focus {
     outline: none;
 }
+
+.stars {
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+    height: 30px;
+    /*padding: 10px 0;*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+}
+
+.star--succeed {
+    color: #FFDF00;
+}
+
+.star--failed {
+    color: red;
+}
+
+.star--empty {
+    color: #757578;
+}

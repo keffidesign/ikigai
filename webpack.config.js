@@ -4,7 +4,8 @@ module.exports = {
     app: `./src`,
     vendor: [
       `./vendor/utils`,
-      `isomorphic-fetch`
+      `isomorphic-fetch`,
+      `moment`
     ]
   },
 
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   resolve: {
-    modules: [ `./src/core`, `./src/modules`, `node_modules`, `vendor` ]
+    modules: [ `./src/core`, `./src/modules`, `./node_modules`, `vendor` ]
   },
 
   module: {
