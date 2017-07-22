@@ -99,7 +99,7 @@ loadAllAnswers()
 
             newWords = newWords.filter(word => word.id !== id);
 
-            postAnswer({ id, enteredValue: target.value, date: (new Date()).toISOString() });
+            postAnswer({ id, enteredValue: target.value, date: (new Date()).toISOString(), userAgent: navigator.userAgent });
 
             console.log('--newWords', newWords, id);
 
