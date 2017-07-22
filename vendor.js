@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 492);
+/******/ 	return __webpack_require__(__webpack_require__.s = 494);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1887,7 +1887,7 @@
         if (!locales[name] && typeof module !== 'undefined' && module && module.exports) {
             try {
                 oldLocale = globalLocale._abbr;
-                __webpack_require__(157)("./" + name);
+                __webpack_require__(156)("./" + name);
                 // because defineLocale currently also sets the global locale, we
                 // want to undo that for lazy loaded locales
                 getSetGlobalLocale(oldLocale);
@@ -4419,7 +4419,7 @@
 
     return hooks;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(154)(module)))
 
 /***/ }),
 /* 1 */,
@@ -14984,8 +14984,7 @@ module.exports = g;
 /* 151 */,
 /* 152 */,
 /* 153 */,
-/* 154 */,
-/* 155 */
+/* 154 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -15012,8 +15011,8 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 156 */,
-/* 157 */
+/* 155 */,
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -15262,9 +15261,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 157;
+webpackContext.id = 156;
 
 /***/ }),
+/* 157 */,
 /* 158 */,
 /* 159 */,
 /* 160 */,
@@ -15296,38 +15296,41 @@ webpackContext.id = 157;
 /* 186 */,
 /* 187 */,
 /* 188 */,
-/* 189 */
+/* 189 */,
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // the whatwg-fetch polyfill installs the fetch() function
 // on the global object (window or self)
 //
 // Return that as the export for use in Webpack, Browserify etc.
-__webpack_require__(476);
+__webpack_require__(477);
 module.exports = self.fetch.bind(self);
 
 /***/ }),
-/* 190 */,
-/* 191 */
+/* 191 */,
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sequence_js__ = __webpack_require__(488);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hashMap_js__ = __webpack_require__(487);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__function_js__ = __webpack_require__(486);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sequence_js__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hashMap_js__ = __webpack_require__(488);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__function_js__ = __webpack_require__(487);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutable_js__ = __webpack_require__(489);
 
 
 
 
-[__WEBPACK_IMPORTED_MODULE_0__sequence_js__, __WEBPACK_IMPORTED_MODULE_1__hashMap_js__, __WEBPACK_IMPORTED_MODULE_2__function_js__].map(funcs => {
+
+
+[__WEBPACK_IMPORTED_MODULE_0__sequence_js__, __WEBPACK_IMPORTED_MODULE_1__hashMap_js__, __WEBPACK_IMPORTED_MODULE_2__function_js__, __WEBPACK_IMPORTED_MODULE_3__mutable_js__].map(funcs => {
 
   Object.keys(funcs).map(funcName => (window || global)[funcName] = funcs[funcName]);
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(136)))
 
 /***/ }),
-/* 192 */,
 /* 193 */,
 /* 194 */,
 /* 195 */,
@@ -15611,7 +15614,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 473 */,
 /* 474 */,
 /* 475 */,
-/* 476 */
+/* 476 */,
+/* 477 */
 /***/ (function(module, exports) {
 
 (function (self) {
@@ -16073,7 +16077,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 })(typeof self !== 'undefined' ? self : this);
 
 /***/ }),
-/* 477 */,
 /* 478 */,
 /* 479 */,
 /* 480 */,
@@ -16082,7 +16085,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 483 */,
 /* 484 */,
 /* 485 */,
-/* 486 */
+/* 486 */,
+/* 487 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16094,7 +16098,7 @@ const pipe = (...fns) => initialValue => reduce((returnValue, fn) => fn(returnVa
 
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16110,7 +16114,17 @@ const get = (key, collection, otherwise) => collection[key] || otherwise;
 
 
 /***/ }),
-/* 488 */
+/* 489 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+const log = (...args) => console.log(...args);
+/* harmony export (immutable) */ __webpack_exports__["log"] = log;
+
+
+/***/ }),
+/* 490 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16164,14 +16178,14 @@ const range = n => new Array(n).fill().map((_, i) => i + 1);
 
 
 /***/ }),
-/* 489 */,
-/* 490 */,
 /* 491 */,
-/* 492 */
+/* 492 */,
+/* 493 */,
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(191);
-__webpack_require__(189);
+__webpack_require__(192);
+__webpack_require__(190);
 module.exports = __webpack_require__(0);
 
 
