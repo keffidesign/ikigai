@@ -1,7 +1,7 @@
 module.exports = {
 
   entry: {
-    app: `./src`,
+    app: `./src/app.js`,
     vendor: [
       `./vendor/utils`,
       `isomorphic-fetch`,
@@ -15,7 +15,12 @@ module.exports = {
   },
 
   resolve: {
-    modules: [ `./src/core`, `./src/modules`, `./node_modules`, `vendor` ]
+    modules: [
+      `./src/core`,
+      `./src/modules`,
+      `./node_modules`,
+      `./vendor`
+    ]
   },
 
   module: {
@@ -69,11 +74,5 @@ module.exports = {
       }
     ]
   },
-
-  devServer: {
-    host: '0.0.0.0',
-    contentBase: `./build`,
-    disableHostCheck: true
-  }
 
 };

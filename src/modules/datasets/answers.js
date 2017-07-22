@@ -1,6 +1,10 @@
 import { createStream } from 'streams';
+import { getIsProduction } from 'environment'
 
-const answersURI = `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1FR58xufUQ0YUGOMS0B8xomAq0eOaP4Cj6AVAtl0ZB3o`;
+const answersURI =
+  getIsProduction()
+  ? `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1FR58xufUQ0YUGOMS0B8xomAq0eOaP4Cj6AVAtl0ZB3o`
+  : `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1ZOTH5sbfeJTLxhkAHAP9aZ7us_UgE6OBe-uumWpopUY`;
 
 export const loadAllAnswers = (cb) => {
 

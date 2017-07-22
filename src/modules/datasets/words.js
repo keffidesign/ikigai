@@ -1,6 +1,10 @@
 import { createStream } from 'streams';
+import { getIsProduction } from 'environment'
 
-const wordsURI = `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1XFE49bXPvVQtmYUhIfUTeynKVGfnFrbefoczInZtJtI`;
+const wordsURI =
+  getIsProduction()
+    ? `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1XFE49bXPvVQtmYUhIfUTeynKVGfnFrbefoczInZtJtI`
+    : `https://script.google.com/macros/s/AKfycbzT4ERAPkM2vyoUruIGLL7peNfhkmxGMzcEXniUO9iRCD49TIs/exec?doc_id=1QoLBcOl7UVGMeMSYzyBPA1h2pnFH033w_7ZbX8izDCI`;
 
 export const loadAllWords = (cb) => {
 
